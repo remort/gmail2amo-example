@@ -1,0 +1,14 @@
+[Unit]
+Description=Set labels for new incoming mails in ***@***.ru using Gmail API
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type=simple
+RestartSec=1
+Restart=always
+WorkingDirectory=/home/ubuntu/amocrm-gmail/
+ExecStart=/usr/bin/python3 app.py --jobs 4 --timeout 60 --responsible-user ***@***.ru
+
+[Install]
+WantedBy=multi-user.target
